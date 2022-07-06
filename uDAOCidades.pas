@@ -1,0 +1,74 @@
+unit uDAOCidades;
+
+interface
+    uses uDAO, uCidades;
+
+    type DAOCidades = class(DAO)
+      private
+      protected
+
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject):string; override;
+        function CarregarColecao : TObject; override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pQuero : boolean):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ DAOCidades }
+
+function DAOCidades.Carregar(pPos: integer): TObject;
+begin
+  inherited;
+end;
+
+function DAOCidades.CarregarColecao: TObject;
+begin
+  inherited;
+end;
+
+constructor DAOCidades.CrieObj;
+begin
+   inherited;
+end;
+
+destructor DAOCidades.Destrua_se;
+begin
+  inherited;
+end;
+
+function DAOCidades.Excluir(pObj: TObject): boolean;
+begin
+  inherited;;
+end;
+
+procedure DAOCidades.LerArquivo;
+begin
+  inherited;
+
+end;
+
+function DAOCidades.Pesquisar(pChave: String; pQuero : boolean): integer;
+begin
+  inherited;
+end;
+
+function DAOCidades.Salvar(pObj: TObject): string;
+
+begin
+  inherited;
+end;
+
+procedure DAOCidades.SalvarArquivo;
+begin
+  inherited;
+
+end;
+
+end.

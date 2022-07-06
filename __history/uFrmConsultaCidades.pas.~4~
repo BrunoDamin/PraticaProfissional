@@ -1,0 +1,100 @@
+unit uFrmConsultaCidades;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uCidades, uEstados, uCtrlCidades, uFrmCadastroCidades;
+
+type
+  TFrmConsultaCidades = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroEstados : TFrmCadastroEstados;
+    umEstado : Estados;
+    umaCtrlEstados : CtrlEstados;
+  public
+    { Public declarations }
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  override;
+    procedure Incluir;                   override;
+    procedure Alterar;                   override;
+    procedure Excluir;                   override;
+    procedure Sair;                      override;
+    procedure Pesquisar;                 override;
+    procedure setCadastro(pObj : TObject); override;
+    procedure carregarLV;                 override;
+  end;
+
+var
+  FrmConsultaCidades: TFrmConsultaCidades;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaCidades }
+
+procedure TFrmConsultaCidades.Alterar;
+begin
+    inherited;
+    umCadastroEstados.ConhecaObj(umEstado, umaCtrlEstados);
+    umCadastroEstados.LimparEdit;
+    umCadastroEstados.CarregarEdit;
+    umCadastroEstados.ShowModal;
+end;
+
+procedure TFrmConsultaCidades.carregarLV;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaCidades.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umEstado := Estados(pObj);
+  umaCtrlEstados := CtrlEstados(pCtrl);
+end;
+
+procedure TFrmConsultaCidades.Excluir;
+var aux : string;
+begin
+  inherited;
+    aux := umCadastroEstados.btn_Salvar.caption;
+    umCadastroEstados.btn_Salvar.caption := 'Excluir';
+    umCadastroEstados.ConhecaObj(umEstado, umaCtrlEstados);
+    umCadastroEstados.LimparEdit;
+    umCadastroEstados.CarregarEdit;
+    umCadastroEstados.BloquearEdit;
+    umCadastroEstados.ShowModal;
+    umCadastroEstados.DesbloquearEdit;
+    umCadastroEstados.btn_Salvar.Caption := aux;
+end;
+
+procedure TFrmConsultaCidades.Incluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaCidades.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaCidades.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaCidades.setCadastro(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

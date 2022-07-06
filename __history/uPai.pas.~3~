@@ -1,0 +1,52 @@
+unit uPai;
+
+interface
+   type Pai = class
+    private
+    protected
+      codigo : integer;
+      dataCad : string[10];
+      ultAlt : string[10];
+    public
+      procedure setCodigo(pCodigo : integer);
+      procedure setDataCad(pDataCad : string);
+      procedure setUltAlt(pUltAlt : string);
+      function getCodigo : integer;
+      function getDataCad : string;
+      function getUltAlt : string;
+  end;
+implementation
+
+{ Pai }
+
+function Pai.getCodigo: integer;
+begin
+
+end;
+
+function Pai.getDataCad: string;
+begin
+
+end;
+
+function Pai.getUltAlt: string;
+begin
+
+end;
+
+procedure Pai.setCodigo(pCodigo: integer);
+begin
+
+end;
+
+procedure Pai.setDataCad(pDataCad: string);
+begin
+
+end;
+
+procedure Pai.setUltAlt(pUltAlt: string);
+begin
+
+end;
+
+end.

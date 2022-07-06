@@ -1,0 +1,42 @@
+unit uMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TFrmMain = class(TForm)
+    MenuPrincipal: TMainMenu;
+    Consultas: TMenuItem;
+    Paises: TMenuItem;
+    Estados: TMenuItem;
+    Cidades: TMenuItem;
+    Clientes: TMenuItem;
+    Fornecedores: TMenuItem;
+    Mercadorias: TMenuItem;
+    Funcionarios: TMenuItem;
+    Entregas: TMenuItem;
+    ConsultarEntregas: TMenuItem;
+    NovaEntrega: TMenuItem;
+    Devolucoes: TMenuItem;
+    Lancamentos: TMenuItem;
+    Opes1: TMenuItem;
+    ConsultarLancamentos: TMenuItem;
+    NovoLancamento: TMenuItem;
+    Sair: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMain: TFrmMain;
+
+implementation
+
+{$R *.dfm}
+
+end.

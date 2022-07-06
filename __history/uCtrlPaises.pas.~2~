@@ -1,0 +1,83 @@
+unit uCtrlPaises;
+
+
+interface
+    uses uCtrlPai, uDAOPaises, uPaises;
+
+    type CtrlPaises = class(Controller)
+      private
+      protected
+        umaDAOPaises : DAOPaises;
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject) : string;        override;
+        function CarregarColecao : TObject;               override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pOBj : TObject):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ ControllerPaises }
+
+function ControllerPaises.Carregar(pPos: integer): TObject;
+begin
+   result := umaDAOPaises.Carregar(pPos);
+end;
+
+function ControllerPaises.CarregarColecao: TObject;
+begin
+    inherited;
+    result := umaDAOPaises.CarregarColecao;
+end;
+
+constructor ControllerPaises.CrieObj;
+begin
+    umaDAOPaises := DAOPaises.CrieObj;
+end;
+
+destructor ControllerPaises.Destrua_se;
+begin
+    umaDAOPaises.Destrua_se;
+end;
+
+function ControllerPaises.Excluir(pObj: TObject): boolean;
+begin
+  result := umaDAOPaises.Excluir(pObj);
+end;
+
+procedure ControllerPaises.LerArquivo;
+begin
+  inherited;
+  umaDAOPaises.LerArquivo;
+end;
+
+function ControllerPaises.Pesquisar(pChave: String; pOBj : TObject): integer;
+var mQuero : boolean;
+    mPais : Paises;
+begin
+   mPais := Paises(pObj);
+   if mPais.getCodigo = 0 then
+      mQuero := False
+   else
+      mQuero := True;
+
+   result := umaDAOPaises.Pesquisar(pChave, mQuero);
+end;
+
+function ControllerPaises.Salvar(pObj: TObject): string;
+begin
+    result := umaDAOPaises.Salvar(pObj);
+end;
+
+procedure ControllerPaises.SalvarArquivo;
+begin
+  inherited;
+   umaDAOPaises.SalvarArquivo;
+end;
+
+end.

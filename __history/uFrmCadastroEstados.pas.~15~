@@ -1,0 +1,117 @@
+unit uFrmCadastroEstados;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uEstados, uCtrlEstados, uPaises, uCtrlPaises;
+
+type
+  TFrmCadastroEstados = class(TFrmCadastroPai)
+    lbl_NomeEstado: TLabel;
+    lbl_UFEstado: TLabel;
+    lbl_CodPais: TLabel;
+    lbl_NomePais: TLabel;
+    btn_Pesquisar: TButton;
+    edt_NomePais: TEdit;
+    edt_CodPais: TEdit;
+    edt_UFEstado: TEdit;
+    edt_NomeEstado: TEdit;
+    procedure edt_NomeEstadoExit(Sender: TObject);
+  private
+    { Private declarations }
+    umEstado : Estados;
+    umaCtrlEstados : CtrlEstados;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject);  override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                  override;
+    procedure DesbloquearEdit;                               override;
+    procedure Salvar;                                        override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroEstados: TFrmCadastroEstados;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmCadastroEstados }
+
+procedure TFrmCadastroEstados.BloquearEdit;
+begin
+  inherited;
+  self.edt_NomeEstado.Enabled := False;
+  self.edt_UFEstado.Enabled := False;
+  self.edt_CodPais.Enabled := False;
+  self.edt_NomePais.Enabled := False;
+  self.edt_DataCadastro.Enabled := False;
+  self.edt_UltimaAlteracao.Enabled := False;
+end;
+
+procedure TFrmCadastroEstados.CarregarEdit;
+begin
+  inherited;
+  self.edt_Codigo.Text := inttostr(umEstado.getCodigo);
+  self.edt_NomeEstado.Text := umEstado.getEstado;
+  self.edt_UFEstado.Text := umEstado.getUf;
+  self.edt_CodPais.Text := inttostr(umEstado.getPais.getCodigo);
+  self.edt_NomePais.Text := umEstado.getPais.getPais;
+  self.edt_DataCadastro.Text := umEstado.getDataCad;
+  self.edt_UltimaAlteracao.Text := umEstado.getUltAlt;
+end;
+
+procedure TFrmCadastroEstados.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umEstado := Estados(pObj);
+  umaCtrlEstados := CtrlEstados(pCtrl);
+end;
+
+procedure TFrmCadastroEstados.DesbloquearEdit;
+begin
+  inherited;
+  self.edt_NomeEstado.Enabled := True;
+  self.edt_UFEstado.Enabled := True;
+  self.edt_CodPais.Enabled := True;
+  self.edt_NomePais.Enabled := True;
+  self.edt_DataCadastro.Enabled := True;
+  self.edt_UltimaAlteracao.Enabled := True;
+end;
+
+procedure TFrmCadastroEstados.edt_NomeEstadoExit(Sender: TObject);
+begin
+  inherited;
+  if (self.edt_NomePais.text <> '') then
+    self.edt_NomePais.Color := clWindow;
+  //mQuero := strtoint(Self.edt_codigo.text) <> 0;
+  if umaCtrlPaises.Pesquisar(self.edt_NomePais.Text, umPais) = 0 then
+  begin
+    showmessage('Pais :' +self.edt_NomePais.text+ ' já cadastrado! ');
+    self.edt_NomePais.SetFocus;
+  end;
+end;
+
+procedure TFrmCadastroEstados.LimparEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroEstados.Sair;
+begin
+
+end;
+
+procedure TFrmCadastroEstados.Salvar;
+begin
+  inherited;
+
+end;
+
+end.

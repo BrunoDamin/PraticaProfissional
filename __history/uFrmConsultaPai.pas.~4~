@@ -1,0 +1,39 @@
+unit uFrmConsultaPai;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls;
+
+type
+  TFrmConsultaPai = class(TForm)
+    edt_Pesquisar: TEdit;
+    btn_Incluir: TButton;
+    btn_Alterar: TButton;
+    btn_Editar: TButton;
+    btn_Sair: TButton;
+    btn_Pesquisar: TButton;
+    Visualizacao: TListView;
+  private
+    { Private declarations }
+  public
+   { Public declarations }
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  virtual;
+    procedure Incluir;                   virtual;
+    procedure Alterar;                   virtual;
+    procedure Excluir;                   virtual;
+    procedure Sair;                      virtual;
+    procedure Pesquisar;                 virtual;
+    procedure setCadastro(pObj : TObject); virtual;
+    procedure carregarLV;                 virtual;
+  end;
+
+var
+  FrmConsultaPai: TFrmConsultaPai;
+
+implementation
+
+{$R *.dfm}
+
+end.

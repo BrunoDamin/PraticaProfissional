@@ -1,0 +1,123 @@
+unit uFrmCadastroFornecedores;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uFornecedores, uCtrlFornecedores;
+
+type
+  TFrmCadastroFornecedores = class(TFrmCadastroPai)
+    lbl_NomeFornecedor: TLabel;
+    lbl_Documento: TLabel;
+    lbl_Rua: TLabel;
+    lbl_CodCidade: TLabel;
+    lbl_NomeCidade: TLabel;
+    lbl_Numero: TLabel;
+    lbl_Bairro: TLabel;
+    lbl_Cep: TLabel;
+    edt_Bairro: TEdit;
+    edt_Nome: TEdit;
+    edt_Numero: TEdit;
+    edt_Cep: TEdit;
+    edt_Documento: TEdit;
+    edt_CodCidade: TEdit;
+    edt_NomeCidade: TEdit;
+    edt_Rua: TEdit;
+    btn_Pesquisar: TButton;
+  private
+    { Private declarations }
+    umFornecedor : Fornecedores;
+    umaCtrlFornecedores : CtrlFornecedores;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject);  override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                  override;
+    procedure DesbloquearEdit;                               override;
+    procedure Salvar;                                        override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroFornecedores: TFrmCadastroFornecedores;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmCadastroFornecedores }
+
+procedure TFrmCadastroFornecedores.BloquearEdit;
+begin
+  inherited;
+  self.edt_Nome.Enabled := False;
+  self.edt_Documento.Enabled := False;
+  self.edt_Rua.Enabled := False;
+  self.edt_Numero.Enabled := False;
+  self.edt_Bairro.Enabled := False;
+  self.edt_Cep.Enabled := False;
+  self.edt_CodCidade.Enabled := False;
+  self.edt_NomeCidade.Enabled := False;
+  self.edt_DataCadastro.Enabled := False;
+  self.edt_UltimaAlteracao.Enabled := False;
+end;
+
+procedure TFrmCadastroFornecedores.CarregarEdit;
+begin
+  inherited;
+  self.edt_Codigo.Text := inttostr(umFornecedor.getCodigo);
+  self.edt_Nome.Text := umFornecedor.getNomeFantasia;
+  self.edt_Documento.Text := umFornecedor.getCnpj;
+  self.edt_Rua.Text := umFornecedor.getRua;
+  self.edt_Numero.Text := umFornecedor.getNumero;
+  self.edt_Bairro.Text := umFornecedor.getBairro;
+  self.edt_Cep.Text := umFornecedor.getCep;
+  self.edt_CodCidade.Text := inttostr(umFornecedor.getCidade.getCodigo);
+  self.edt_NomeCidade.Text := umFornecedor.getCidade.getCidade;
+  self.edt_DataCadastro.Text := umFornecedor.getDataCad;
+  self.edt_UltimaAlteracao.Text := umFornecedor.getUltAlt;
+end;
+
+procedure TFrmCadastroFornecedores.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umFornecedor := Fornecedores(pObj);
+  umaCtrlFornecedores := CtrlFornecedores(pCtrl);
+end;
+
+procedure TFrmCadastroFornecedores.DesbloquearEdit;
+begin
+  inherited;
+  self.edt_Nome.Enabled := True;
+  self.edt_Documento.Enabled := True;
+  self.edt_Rua.Enabled := True;
+  self.edt_Numero.Enabled := True;
+  self.edt_Bairro.Enabled := True;
+  self.edt_Cep.Enabled := True;
+  self.edt_CodCidade.Enabled := True;
+  self.edt_NomeCidade.Enabled := True;
+  self.edt_DataCadastro.Enabled := True;
+  self.edt_UltimaAlteracao.Enabled := True;
+end;
+
+procedure TFrmCadastroFornecedores.LimparEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroFornecedores.Sair;
+begin
+
+end;
+
+procedure TFrmCadastroFornecedores.Salvar;
+begin
+  inherited;
+
+end;
+
+end.

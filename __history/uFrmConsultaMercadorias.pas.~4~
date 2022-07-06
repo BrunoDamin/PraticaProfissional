@@ -1,0 +1,89 @@
+unit uFrmConsultaMercadorias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uMercadorias, uFornecedores, uCtrlMercadorias, uFrmCadastroMercadorias;
+
+type
+  TFrmConsultaMercadorias = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroMercadorias : TFrmCadastroMercadorias;
+    umaMercadorias : Mercadorias;
+    umaFornecedor : Fornecedores;
+    umaCtrlMercadorias : CtrlMercadorias;
+  public
+    { Public declarations }
+
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  override;
+    procedure Incluir;                   override;
+    procedure Alterar;                   override;
+    procedure Excluir;                   override;
+    procedure Sair;                      override;
+    procedure Pesquisar;                 override;
+    procedure setCadastro(pObj : TObject); override;
+    procedure carregarLV;                 override;
+  end;
+
+var
+  FrmConsultaMercadorias: TFrmConsultaMercadorias;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaMercadorias }
+
+procedure TFrmConsultaMercadorias.Alterar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.carregarLV;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.Excluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.Incluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.setCadastro(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

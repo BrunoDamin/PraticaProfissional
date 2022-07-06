@@ -1,0 +1,33 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  uMain in '..\..\Documents\Embarcadero\Studio\Projects\uMain.pas' {FrmMain},
+  uInterfaces in '..\..\Documents\Embarcadero\Studio\Projects\uInterfaces.pas',
+  uPai in '..\..\Documents\Embarcadero\Studio\Projects\uPai.pas',
+  uPaises in '..\..\Documents\Embarcadero\Studio\Projects\uPaises.pas',
+  uEstados in '..\..\Documents\Embarcadero\Studio\Projects\uEstados.pas',
+  uCidades in '..\..\Documents\Embarcadero\Studio\Projects\uCidades.pas',
+  uFrmCadastroPai in '..\..\Documents\Embarcadero\Studio\Projects\uFrmCadastroPai.pas' {FrmCadastroPai},
+  uFrmCadastroPaises in '..\..\Documents\Embarcadero\Studio\Projects\uFrmCadastroPaises.pas' {FrmCadastroPaises},
+  uCtrlPai in '..\..\Documents\Embarcadero\Studio\Projects\uCtrlPai.pas',
+  uCtrlPaises in '..\..\Documents\Embarcadero\Studio\Projects\uCtrlPaises.pas',
+  uDAOPaises in '..\..\Documents\Embarcadero\Studio\Projects\uDAOPaises.pas',
+  uDAO in '..\..\Documents\Embarcadero\Studio\Projects\uDAO.pas',
+  uFrmConsultaPai in '..\..\Documents\Embarcadero\Studio\Projects\uFrmConsultaPai.pas' {FrmConsultaPai},
+  uFrmConsultaPaises in '..\..\Documents\Embarcadero\Studio\Projects\uFrmConsultaPaises.pas' {FrmConsultaPaises},
+  uDM in '..\..\Documents\Embarcadero\Studio\Projects\uDM.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmCadastroPai, FrmCadastroPai);
+  Application.CreateForm(TFrmCadastroPaises, FrmCadastroPaises);
+  Application.CreateForm(TFrmConsultaPai, FrmConsultaPai);
+  Application.CreateForm(TFrmConsultaPaises, FrmConsultaPaises);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

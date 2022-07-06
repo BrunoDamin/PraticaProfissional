@@ -1,0 +1,74 @@
+unit uDAOClientes;
+
+interface
+    uses uDAO, uClientes;
+
+    type DAOClientes = class(DAO)
+      private
+      protected
+
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject):string; override;
+        function CarregarColecao : TObject; override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pQuero : boolean):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ DAOClientes }
+
+function DAOClientes.Carregar(pPos: integer): TObject;
+begin
+  inherited;
+end;
+
+function DAOClientes.CarregarColecao: TObject;
+begin
+  inherited;
+end;
+
+constructor DAOClientes.CrieObj;
+begin
+   inherited;
+end;
+
+destructor DAOClientes.Destrua_se;
+begin
+  inherited;
+end;
+
+function DAOClientes.Excluir(pObj: TObject): boolean;
+begin
+  inherited;;
+end;
+
+procedure DAOClientes.LerArquivo;
+begin
+  inherited;
+
+end;
+
+function DAOClientes.Pesquisar(pChave: String; pQuero : boolean): integer;
+begin
+  inherited;
+end;
+
+function DAOClientes.Salvar(pObj: TObject): string;
+
+begin
+  inherited;
+end;
+
+procedure DAOClientes.SalvarArquivo;
+begin
+  inherited;
+
+end;
+
+end.

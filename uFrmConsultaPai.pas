@@ -1,0 +1,111 @@
+unit uFrmConsultaPai;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls;
+
+type
+  TFrmConsultaPai = class(TForm)
+    edt_Pesquisar: TEdit;
+    btn_Incluir: TButton;
+    btn_Alterar: TButton;
+    btn_Excluir: TButton;
+    btn_Sair: TButton;
+    btn_Pesquisar: TButton;
+    Visualizacao: TListView;
+    procedure btn_PesquisarClick(Sender: TObject);
+    procedure btn_IncluirClick(Sender: TObject);
+    procedure btn_AlterarClick(Sender: TObject);
+    procedure btn_ExcluirClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+   { Public declarations }
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  virtual;
+    procedure Incluir;                   virtual;
+    procedure Alterar;                   virtual;
+    procedure Excluir;                   virtual;
+    procedure Sair;                      virtual;
+    procedure Pesquisar;                 virtual;
+    procedure setCadastro(pObj : TObject); virtual;
+    procedure carregarLV;                 virtual;
+  end;
+
+var
+  FrmConsultaPai: TFrmConsultaPai;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaPai }
+
+procedure TFrmConsultaPai.Alterar;
+begin
+
+end;
+
+procedure TFrmConsultaPai.btn_AlterarClick(Sender: TObject);
+begin
+  Alterar;
+end;
+
+procedure TFrmConsultaPai.btn_ExcluirClick(Sender: TObject);
+begin
+  Excluir;
+end;
+
+procedure TFrmConsultaPai.btn_IncluirClick(Sender: TObject);
+begin
+  Incluir;
+end;
+
+procedure TFrmConsultaPai.btn_PesquisarClick(Sender: TObject);
+begin
+  Pesquisar;
+end;
+
+procedure TFrmConsultaPai.btn_SairClick(Sender: TObject);
+begin
+  Sair;
+end;
+
+procedure TFrmConsultaPai.carregarLV;
+begin
+
+end;
+
+procedure TFrmConsultaPai.ConhecaObj(pObj, pCtrl: TObject);
+begin
+
+end;
+
+procedure TFrmConsultaPai.Excluir;
+begin
+
+end;
+
+procedure TFrmConsultaPai.Incluir;
+begin
+
+end;
+
+procedure TFrmConsultaPai.Pesquisar;
+begin
+
+end;
+
+procedure TFrmConsultaPai.Sair;
+begin
+
+end;
+
+procedure TFrmConsultaPai.setCadastro(pObj: TObject);
+begin
+
+end;
+
+end.

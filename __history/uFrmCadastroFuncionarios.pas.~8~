@@ -1,0 +1,40 @@
+unit uFrmCadastroFuncionarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uFuncionarios, uCtrlFuncionarios;
+
+type
+  TFrmCadastroFuncionarios = class(TFrmCadastroPai)
+    lbl_NomeFuncionario: TLabel;
+    lbl_TipoFuncionario: TLabel;
+    lbl_Salario: TLabel;
+    edt_SalarioFuncionario: TEdit;
+    edt_TipoFuncionario: TEdit;
+    edt_NomeFuncionario: TEdit;
+  private
+    { Private declarations }
+    umaCidade : Cidades;
+    umaCtrlCidades : CtrlCidades;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject);  override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                  override;
+    procedure DesbloquearEdit;                               override;
+    procedure Salvar;                                        override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroFuncionarios: TFrmCadastroFuncionarios;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,88 @@
+unit uFrmConsultaClientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uCidades, uClientes, uFrmCadastroClientes, uCtrlClientes;
+
+type
+  TFrmConsultaClientes = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroClientes : TFrmCadastroClientes;
+    umCliente : Clientes;
+    umaCidade : Cidades;
+    umaCtrlClientes : CtrlClientes;
+  public
+    { Public declarations }
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  override;
+    procedure Incluir;                   override;
+    procedure Alterar;                   override;
+    procedure Excluir;                   override;
+    procedure Sair;                      override;
+    procedure Pesquisar;                 override;
+    procedure setCadastro(pObj : TObject); override;
+    procedure carregarLV;                 override;
+  end;
+
+var
+  FrmConsultaClientes: TFrmConsultaClientes;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaClientes }
+
+procedure TFrmConsultaClientes.Alterar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.carregarLV;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.Excluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.Incluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaClientes.setCadastro(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

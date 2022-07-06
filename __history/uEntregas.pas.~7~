@@ -1,0 +1,80 @@
+unit uEntregas;
+
+interface
+uses uPai, uClientes, uMercadorias, uFuncionarios;
+
+type Entregas = Class(Pai)
+  private
+  protected
+    umCliente : Clientes;
+    umaMercadoria : Mercadorias;
+    umFuncionario : Funcionarios;
+  public
+        constructor CrieObj;
+        constructor CrieInit( pCodigo, pCodCliente, pCodMercadoria, pCodFuncionario : integer; pDataCad, pUltAlt: string);
+        destructor Destrua_se;
+        procedure setCliente(pCliente : Clientes);
+        procedure setMercadoria(pMercadoria : Mercadorias);
+        procedure setFuncionario(pFuncionario : Funcionarios);
+        function getCliente : Clientes;
+        function getMercadoria : Mercadorias;
+        function getFuncionario : Funcionarios;
+        function clone : Entregas;
+End;
+
+implementation
+
+{ Entregas }
+
+function Entregas.clone: Entregas;
+begin
+  result := Entregas.CrieInit(Codigo, umCliente.getCodigo, umaMercadoria.getCodigo, umFuncionario.getCodigo, dataCad, ultAlt);
+end;
+
+constructor Entregas.CrieInit(pCodigo, pCodCliente, pCodMercadoria,
+  pCodFuncionario: integer; pDataCad, pUltAlt: string);
+begin
+
+end;
+
+constructor Entregas.CrieObj;
+begin
+
+end;
+
+destructor Entregas.Destrua_se;
+begin
+
+end;
+
+function Entregas.getCliente: Clientes;
+begin
+
+end;
+
+function Entregas.getFuncionario: Funcionarios;
+begin
+
+end;
+
+function Entregas.getMercadoria: Mercadorias;
+begin
+
+end;
+
+procedure Entregas.setCliente(pCliente: Clientes);
+begin
+
+end;
+
+procedure Entregas.setFuncionario(pFuncionario: Funcionarios);
+begin
+
+end;
+
+procedure Entregas.setMercadoria(pMercadoria: Mercadorias);
+begin
+
+end;
+
+end.

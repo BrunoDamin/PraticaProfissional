@@ -1,0 +1,30 @@
+unit uFrmConsultaMercadorias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uMercadorias, uFornecedores, uCtrlMercadorias, uFrmCadastroMercadorias;
+
+type
+  TFrmConsultaMercadorias = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroMercadorias : TFrmCadastroMercadorias;
+    umaMercadorias : Mercadorias;
+    umaFornecedor : Fornecedores;
+    umaCtrlMercadorias : CtrlMercadorias;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmConsultaMercadorias: TFrmConsultaMercadorias;
+
+implementation
+
+{$R *.dfm}
+
+end.

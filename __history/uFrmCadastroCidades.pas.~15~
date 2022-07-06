@@ -1,0 +1,153 @@
+unit uFrmCadastroCidades;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uCtrlCidades, uCidades, uEstados, uCtrlEstados;
+
+type
+  TFrmCadastroCidades = class(TFrmCadastroPai)
+    lbl_NomeCidade: TLabel;
+    lbl_CodEstado: TLabel;
+    lbl_NomeEstado: TLabel;
+    lbl_Ddd: TLabel;
+    edt_Cidade: TEdit;
+    edt_NomeEstado: TEdit;
+    edt_CodEstado: TEdit;
+    edt_Ddd: TEdit;
+    btn_Pesquisar: TButton;
+  private
+    { Private declarations }
+    umaCidade : Cidades;
+    umaCtrlCidades : CtrlCidades;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject);  override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                  override;
+    procedure DesbloquearEdit;                               override;
+    procedure Salvar;                                        override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroCidades: TFrmCadastroCidades;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmCadastroCidades }
+
+procedure TFrmCadastroCidades.BloquearEdit;
+begin
+  inherited;
+  self.edt_Cidade.Enabled := False;
+  self.edt_DDD.Enabled := False;
+  self.edt_CodEstado.Enabled := False;
+  self.edt_NomeEstado.Enabled := False;
+  self.edt_DataCadastro.Enabled := False;
+  self.edt_UltimaAlteracao.Enabled := False;
+end;
+
+procedure TFrmCadastroCidades.CarregarEdit;
+begin
+  inherited;
+  self.edt_Codigo.Text := inttostr(umaCidade.getCodigo);
+  self.edt_Cidade.Text := umaCidade.getCidade;
+  self.edt_Ddd.Text := umaCidade.getddd;
+  self.edt_CodEstado.Text := inttostr(umaCidade.getEstado.getCodigo);
+  self.edt_NomeEstado.Text := umaCidade.getEstado.getEstado;
+  self.edt_DataCadastro.Text := umaCidade.getDataCad;
+  self.edt_UltimaAlteracao.Text := umaCidade.getUltAlt;
+end;
+
+procedure TFrmCadastroCidades.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umaCidade := Cidades(pObj);
+  umaCtrlCidades := CtrlCidades(pCtrl);
+end;
+
+procedure TFrmCadastroCidades.DesbloquearEdit;
+begin
+  inherited;
+  self.edt_Cidade.Enabled := True;
+  self.edt_Ddd.Enabled := True;
+  self.edt_CodEstado.Enabled := True;
+  self.edt_NomeEstado.Enabled := True;
+  self.edt_DataCadastro.Enabled := True;
+  self.edt_UltimaAlteracao.Enabled := True;
+end;
+
+procedure TFrmCadastroCidades.LimparEdit;
+begin
+  inherited;
+  self.edt_Codigo.Text := '0';
+  self.edt_Cidade.Clear;
+  self.edt_Ddd.Clear;
+  self.edt_CodEstado.Text := '0';
+  self.edt_NomeEstado.Clear;
+  self.edt_DataCadastro.Clear;
+  self.edt_UltimaAlteracao.Clear;
+end;
+
+procedure TFrmCadastroCidades.Sair;
+begin
+
+end;
+
+procedure TFrmCadastroCidades.Salvar;
+begin
+  if length(self.edt_Cidade.Text) = 0 then
+    self.edt_Cidade.Color := clYellow;
+  if length(self.edt_Ddd.Text) = 0 then
+    self.edt_Ddd.Color := clYellow;
+
+
+  if ehObrigatorio(self.edt_Cidade.text, '*') and (length(self.edt_Cidade.Text) = 0 )then
+  begin
+    showmessage('CAMPO NOME Cidade É OBRIGATÓRIO!');
+    self.edt_Cidade.SetFocus;
+  end
+  else if ehObrigatorio(self.edt_Ddd.text, '*') and (length(self.edt_Ddd.Text) = 0) then
+  begin
+    showmessage('CAMPO UF É OBRIGATÓRIO!');
+    self.edt_Ddd.SetFocus;
+  end
+  else
+  begin
+    if self.btn_Salvar.Caption = '&Salvar' then
+    begin
+        umaCidade.setCodigo(strtoint(self.edt_codigo.Text));
+        umaCidade.setCidade(self.edt_Cidade.Text);
+        umaCidade.setUF(self.edt_UfCidade.Text);
+        umaCidade.getPais.setCodigo(strtoint(self.edt_CodPais.Text));
+        umaCidade.getPais.setPais(self.edt_NomePais.Text);
+        umaidade.setDataCad(self.edt_DataCadastro.text);
+        umaCidade.setUltAlt(self.edt_UltimaAlteracao.text);
+        umaCtrlCidades.Salvar(umCidade.clone);
+
+    end
+    else
+    begin
+       if umaCtrlCidades.Excluir(umCidade.clone)then
+          showmessage('Pais excluído com sucesso!')
+       else
+          showmessage('Problemas na exclusão!');
+
+    end;
+
+
+
+  end;
+
+  inherited;
+
+
+end;
+
+end.

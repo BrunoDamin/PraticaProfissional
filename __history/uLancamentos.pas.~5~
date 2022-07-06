@@ -1,0 +1,67 @@
+unit uLancamentos;
+
+interface
+uses uPai, uEntregas;
+
+type Lancamentos = Class(Pai)
+  private
+  protected
+    Valor : real;
+    umaEntrega : Entregas;
+  public
+        constructor CrieObj;
+        constructor CrieInit( pCodigo, pCodEntrega : integer; pValor : real; pDataCad, pUltAlt: string);
+        destructor Destrua_se;
+        procedure setValor(pValor : real);
+        procedure setEntrega(pEntrega : Entregas);
+        function getValor : real;
+        function getEntrega : Entregas;
+        function clone : Lancamentos;
+End;
+
+implementation
+
+{ Lancamentos }
+
+function Lancamentos.clone: Lancamentos;
+begin
+   result := Lancamentos.CrieInit(Codigo, umaEntrega.getCodigo, pValor, dataCad, ultAlt);
+end;
+
+constructor Lancamentos.CrieInit(pCodigo, pCodEntrega: integer; pValor: real;
+  pDataCad, pUltAlt: string);
+begin
+
+end;
+
+constructor Lancamentos.CrieObj;
+begin
+
+end;
+
+destructor Lancamentos.Destrua_se;
+begin
+
+end;
+
+function Lancamentos.getEntrega: Entregas;
+begin
+
+end;
+
+function Lancamentos.getValor: real;
+begin
+
+end;
+
+procedure Lancamentos.setEntrega(pEntrega: Entregas);
+begin
+
+end;
+
+procedure Lancamentos.setValor(pValor: real);
+begin
+
+end;
+
+end.

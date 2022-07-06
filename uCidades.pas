@@ -1,0 +1,85 @@
+unit uCidades;
+
+interface
+    uses uPai, uEstados;
+
+    type Cidades = class(Pai)
+      private
+      protected
+        cidade : string[55];
+        ddd : string[3];
+        umEstado : Estados;
+      public
+        constructor CrieObj;
+        constructor CrieInit( pCodigo : integer; pCidade, pDDD, pDataCad, pUltAlt: string; pCodEstado : integer);
+        destructor Destrua_se;
+        procedure setCidade(pCidade : string);
+        procedure setDDD(pDDD : string);
+        procedure setEstado(pEstado : Estados);
+        function getCidade : string;
+        function getDDD : string;
+        function getEstado : Estados;
+    end;
+
+implementation
+
+{ Cidades }
+
+constructor Cidades.CrieInit(pCodigo: integer; pCidade, pDDD, pDataCad, pUltAlt: string;
+  pCodEstado: integer);
+begin
+    codigo := pCodigo;
+    cidade := pCidade;
+    Ddd := pDDD;
+    dataCad := pDataCad;
+    ultAlt := pUltAlt;
+    umEstado := Estados.CrieInit(pCodEstado, '', '', '', '',0);
+end;
+
+constructor Cidades.CrieObj;
+begin
+    codigo := 0;
+    cidade := '';
+    Ddd := '';
+    DataCad := '';
+    UltAlt := '';
+    umEstado := Estados.CrieObj
+end;
+
+destructor Cidades.Destrua_se;
+begin
+   umEstado.Destrua_se;
+end;
+
+function Cidades.getCidade: string;
+begin
+   result := cidade;
+end;
+
+function Cidades.getDDD: string;
+begin
+   result := ddd;
+end;
+
+function Cidades.getEstado: Estados;
+begin
+   result := umEstado;
+end;
+
+procedure Cidades.setCidade(pCidade: string);
+begin
+   cidade := pCidade;
+end;
+
+procedure Cidades.setDDD(pDDD: string);
+begin
+   ddd := pDDD;
+end;
+
+procedure Cidades.setEstado(pEstado: Estados);
+begin
+   umEstado := pEstado;
+end;
+
+end.
+

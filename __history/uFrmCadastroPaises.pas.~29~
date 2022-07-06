@@ -1,0 +1,179 @@
+unit uFrmCadastroPaises;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uPaises, uCtrlPaises;
+
+type
+  TFrmCadastroPaises = class(TFrmCadastroPai)
+    lbl_NomePais: TLabel;
+    lbl_Ddi: TLabel;
+    lbl_Sigla: TLabel;
+    lbl_Moeda: TLabel;
+    edt_NomePais: TEdit;
+    edt_Moeda: TEdit;
+    edt_Ddi: TEdit;
+    edt_Sigla: TEdit;
+    procedure edt_NomePaisExit(Sender: TObject);
+  private
+    { Private declarations }
+    umPais : Paises;
+    umaCtrlPaises : CtrlPaises;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject); override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                 override;
+    procedure DesbloquearEdit;                              override;
+    procedure Salvar;                                       override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroPaises: TFrmCadastroPaises;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmCadastroPai1 }
+
+procedure TFrmCadastroPaises.BloquearEdit;
+begin
+  inherited;
+  self.edt_NomePais.Enabled := False;
+  self.edt_Sigla.Enabled := False;
+  self.edt_Ddi.Enabled := False;
+  self.edt_DataCadastro.Enabled := False;
+  self.edt_UltimaAlteracao.Enabled := False;
+end;
+
+procedure TFrmCadastroPaises.CarregarEdit;
+begin
+  inherited;
+  self.edt_Codigo.Text := inttostr(umPais.getCodigo);
+  self.edt_NomePais.Text := umPais.getPais;
+  self.edt_Sigla.Text := umPais.getSigla;
+  self.edt_Ddi.Text := umPais.getDDI;
+  self.edt_DataCadastro.Text := umPais.getDataCad;
+  self.edt_UltimaAlteracao.Text := umPais.getUltAlt;
+
+end;
+
+procedure TFrmCadastroPaises.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umPais := Paises(pObj);
+  umaCtrlPaises := CtrlPaises(pCtrl);
+
+end;
+
+procedure TFrmCadastroPaises.DesbloquearEdit;
+begin
+  inherited;
+  self.edt_NomePais.Enabled := True;
+  self.edt_Sigla.Enabled := True;
+  self.edt_Ddi.Enabled := True;
+  self.edt_DataCadastro.Enabled := true;
+  self.edt_UltimaAlteracao.Enabled := true;
+end;
+
+procedure TFrmCadastroPaises.edt_NomePaisExit(Sender: TObject);
+begin
+  inherited;
+  if (self.edt_NomePais.text <> '') then
+    self.edt_NomePais.Color := clWindow;
+  //mQuero := strtoint(Self.edt_codigo.text) <> 0;
+  if umaCtrlPaises.Pesquisar(self.edt_Pais.Text, umPais) = 0 then
+  begin
+    showmessage('Pais :' +self.edt_NomePais.text+ ' já cadastrado! ');
+    self.edt_NomePais.SetFocus;
+  end;
+
+
+end;
+
+procedure TFrmCadastroPaises.LimparEdit;
+begin
+  inherited;
+  inherited;
+  self.edt_Codigo.Text := '0';
+  self.edt_NomePais.Clear;
+  self.edt_Sigla.Clear;
+  self.edt_Ddi.Clear;
+  self.edt_DataCadastro.Clear;
+  self.edt_UltimaAlteracao.Clear;
+end;
+
+procedure TFrmCadastroPaises.Sair;
+begin
+
+end;
+
+procedure TFrmCadastroPaises.Salvar;
+begin
+ if length(self.edt_NomePais.Text) = 0 then
+    self.edt_NomePais.Color := clYellow;
+  if length(self.edt_Sigla.Text) = 0 then
+    self.edt_Sigla.Color := clYellow;
+  if length(self.edt_DDI.Text) = 0 then
+    self.edt_DDI.Color := clYellow;
+  if length(self.edt_Moeda.Text) = 0 then
+    self.edt_Moeda.Color := clYellow;
+
+  if ehObrigatorio(self.edt_NomePais.text, '*') and (length(self.edt_NomePais.Text) = 0 )then
+  begin
+    showmessage('CAMPO PAÍS É OBRIGATÓRIO!');
+    self.edt_NomePais.SetFocus;
+  end
+  else if ehObrigatorio(self.edt_Sigla.text, '*') and (length(self.edt_Sigla.Text) = 0) then
+  begin
+    showmessage('CAMPO SIGLA É OBRIGATÓRIO!');
+    self.edt_Sigla.SetFocus;
+  end
+  else if ehObrigatorio(self.edt_DDI.text, '*') and (length(self.edt_DDI.Text) = 0) then
+  begin
+    showmessage('CAMPO DDI É OBRIGATÓRIO!');
+    self.edt_DDI.SetFocus;
+  end
+  else if ehObrigatorio(self.edt_Moeda.text, '*') and (length(self.edt_Moeda.Text) = 0) then
+  begin
+    showmessage('CAMPO DDI É OBRIGATÓRIO!');
+    self.edt_Moeda.SetFocus;
+  end
+  else
+  begin
+    if self.btn_Salvar.Caption = '&Salvar' then
+    begin
+        umPais.setCodigo(strtoint(self.edt_codigo.Text));
+        umPais.setPais(self.edt_NomePais.Text);
+        umPais.setSigla(self.edt_Sigla.Text);
+        umPais.setDDI(self.edt_Ddi.Text);
+        umPais.setDataCad(self.edt_DataCadastro.text);
+        umPais.setUltAlt(self.edt_UltimaAlteracao.text);
+        umaCtrlPaises.Salvar(umPais.clone);
+
+    end
+    else
+    begin
+       if umaCtrlPaises.Excluir(umPais.clone)then
+          showmessage('Pais excluído com sucesso!')
+       else
+          showmessage('Problemas na exclusão!');
+
+    end;
+
+
+
+  end;
+
+   inherited;
+
+
+end;
+
+end.

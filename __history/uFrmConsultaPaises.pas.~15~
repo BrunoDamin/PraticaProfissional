@@ -1,0 +1,108 @@
+unit uFrmConsultaPaises;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uPaises, uFrmCadastroPaises, uCtrlPaises;
+
+type
+  TFrmConsultaPaises = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroPaises : TFrmCadastroPaises;
+    umPais : Paises;
+    umaCtrlPaises : CtrlPaises;
+  public
+    { Public declarations }
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  override;
+    procedure Incluir;                   override;
+    procedure Alterar;                   override;
+    procedure Excluir;                   override;
+    procedure Sair;                      override;
+    procedure Pesquisar;                 override;
+    procedure setCadastro(pObj : TObject); override;
+    procedure carregarLV;                 override;
+  end;
+
+var
+  FrmConsultaPaises: TFrmConsultaPaises;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaPaises }
+
+procedure TFrmConsultaPaises.Alterar;
+begin
+    inherited;
+    umCadastroPaises.ConhecaObj(umPais, umaCtrlPaises);
+    umCadastroPaises.LimparEdit;
+    umCadastroPaises.CarregarEdit;
+    umCadastroPaises.ShowModal;
+end;
+
+procedure TFrmConsultaPaises.carregarLV;
+begin
+ var LVItem : TListItem;
+    tam, k : integer;
+    oPais : Paises;
+    aColPaises : ColecaoPaises;
+begin
+  inherited;
+  aColPaises := ColecaoPaises(umaControllerPaises.CarregarColecao);
+  self.ListView1.clear;
+  tam := aColPaises.getTam;
+  for k := 1 to tam do
+  begin
+    oPais := Paises(aColPaises.Carregar(k));
+    LVItem := Listview1.items.Add;
+    LVItem.Caption := inttostr(oPais.getCodigo);
+    LVItem.SubItems.add(oPais.getPais);
+    LVItem.SubItems.add(oPais.getSigla);
+    LVItem.SubItems.add(oPais.getDDI);
+    LVItem.SubItems.add(oPais.getDataCad);
+    LVItem.SubItems.add(oPais.getUltAlt);
+  end;
+end;
+
+procedure TFrmConsultaPaises.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaPaises.Excluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaPaises.Incluir;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaPaises.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaPaises.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaPaises.setCadastro(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

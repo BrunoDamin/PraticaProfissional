@@ -1,0 +1,74 @@
+unit uDAOPaises;
+
+interface
+    uses uDAO, uPaises;
+
+    type DAOPaises = class(DAO)
+      private
+      protected
+
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject):string; override;
+        function CarregarColecao : TObject; override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pQuero : boolean):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ DAOPaises }
+
+function DAOPaises.Carregar(pPos: integer): TObject;
+begin
+  inherited;
+end;
+
+function DAOPaises.CarregarColecao: TObject;
+begin
+  inherited;
+end;
+
+constructor DAOPaises.CrieObj;
+begin
+   inherited;
+end;
+
+destructor DAOPaises.Destrua_se;
+begin
+  inherited;
+end;
+
+function DAOPaises.Excluir(pObj: TObject): boolean;
+begin
+  inherited;;
+end;
+
+procedure DAOPaises.LerArquivo;
+begin
+  inherited;
+
+end;
+
+function DAOPaises.Pesquisar(pChave: String; pQuero : boolean): integer;
+begin
+  inherited;
+end;
+
+function DAOPaises.Salvar(pObj: TObject): string;
+
+begin
+  inherited;
+end;
+
+procedure DAOPaises.SalvarArquivo;
+begin
+  inherited;
+
+end;
+
+end.

@@ -1,0 +1,83 @@
+object FrmMain: TFrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Main'
+  ClientHeight = 403
+  ClientWidth = 592
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MenuPrincipal
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MenuPrincipal: TMainMenu
+    Left = 176
+    Top = 96
+    object Consultas: TMenuItem
+      Caption = 'Consultas'
+      object Paises: TMenuItem
+        Caption = 'Pa'#237'ses'
+        OnClick = PaisesClick
+      end
+      object Estados: TMenuItem
+        Caption = 'Estados'
+        OnClick = EstadosClick
+      end
+      object Cidades: TMenuItem
+        Caption = 'Cidades'
+        OnClick = CidadesClick
+      end
+      object Clientes: TMenuItem
+        Caption = 'Clientes'
+        OnClick = ClientesClick
+      end
+      object Fornecedores: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = FornecedoresClick
+      end
+      object Mercadorias: TMenuItem
+        Caption = 'Mercadorias'
+        OnClick = MercadoriasClick
+      end
+      object Funcionarios: TMenuItem
+        Caption = 'Funcion'#225'rios'
+        OnClick = FuncionariosClick
+      end
+    end
+    object Entregas: TMenuItem
+      Caption = 'Entregas'
+      object ConsultarEntregas: TMenuItem
+        Caption = 'Consultar Entrega'
+        OnClick = ConsultarEntregasClick
+      end
+      object NovaEntrega: TMenuItem
+        Caption = 'Nova Entrega'
+        OnClick = NovaEntregaClick
+      end
+      object Devolucoes: TMenuItem
+        Caption = 'Devolu'#231#245'es'
+      end
+    end
+    object Lancamentos: TMenuItem
+      Caption = 'Lan'#231'amentos'
+      object ConsultarLancamentos: TMenuItem
+        Caption = 'Consultar Lan'#231'amentos'
+        OnClick = ConsultarLancamentosClick
+      end
+      object NovoLancamento: TMenuItem
+        Caption = 'Novo Lan'#231'amento'
+        OnClick = NovoLancamentoClick
+      end
+    end
+    object Opes1: TMenuItem
+      Caption = 'Op'#231#245'es'
+    end
+    object Sair: TMenuItem
+      Caption = 'Sair'
+    end
+  end
+end

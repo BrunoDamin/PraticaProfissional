@@ -1,0 +1,41 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  uMain in '..\..\Documents\Embarcadero\Studio\Projects\uMain.pas' {FrmMain},
+  uInterfaces in '..\..\Documents\Embarcadero\Studio\Projects\uInterfaces.pas',
+  uPai in '..\..\Documents\Embarcadero\Studio\Projects\uPai.pas',
+  uPaises in '..\..\Documents\Embarcadero\Studio\Projects\uPaises.pas',
+  uEstados in '..\..\Documents\Embarcadero\Studio\Projects\uEstados.pas',
+  uCidades in '..\..\Documents\Embarcadero\Studio\Projects\uCidades.pas',
+  uFrmCadastroPai in '..\..\Documents\Embarcadero\Studio\Projects\uFrmCadastroPai.pas' {FrmCadastroPai},
+  uFrmCadastroPaises in '..\..\Documents\Embarcadero\Studio\Projects\uFrmCadastroPaises.pas' {FrmCadastroPaises},
+  uCtrlPai in '..\..\Documents\Embarcadero\Studio\Projects\uCtrlPai.pas',
+  uCtrlPaises in '..\..\Documents\Embarcadero\Studio\Projects\uCtrlPaises.pas',
+  uDAOPaises in '..\..\Documents\Embarcadero\Studio\Projects\uDAOPaises.pas',
+  uDAO in '..\..\Documents\Embarcadero\Studio\Projects\uDAO.pas',
+  uFrmConsultaPai in '..\..\Documents\Embarcadero\Studio\Projects\uFrmConsultaPai.pas' {FrmConsultaPai},
+  uFrmConsultaPaises in '..\..\Documents\Embarcadero\Studio\Projects\uFrmConsultaPaises.pas' {FrmConsultaPaises},
+  uDM in 'uDM.pas' {DM: TDataModule},
+  uFrmConsultaEstados in 'uFrmConsultaEstados.pas' {FrmConsultaEstados},
+  uFrmCadastroEstados in 'uFrmCadastroEstados.pas' {FrmCadastroEstados},
+  uCtrlEstados in 'uCtrlEstados.pas',
+  uDAOEstados in 'uDAOEstados.pas',
+  uConsultaCidades in 'uConsultaCidades.pas' {FrmConsultaPai1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmCadastroPai, FrmCadastroPai);
+  Application.CreateForm(TFrmCadastroPaises, FrmCadastroPaises);
+  Application.CreateForm(TFrmConsultaPai, FrmConsultaPai);
+  Application.CreateForm(TFrmConsultaPaises, FrmConsultaPaises);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmConsultaEstados, FrmConsultaEstados);
+  Application.CreateForm(TFrmCadastroEstados, FrmCadastroEstados);
+  Application.CreateForm(TFrmConsultaPai1, FrmConsultaPai1);
+  Application.Run;
+end.

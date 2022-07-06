@@ -1,0 +1,74 @@
+unit uDAOCidades;
+
+interface
+    uses uDAO, uPaises;
+
+    type DAOEstados = class(DAO)
+      private
+      protected
+
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject):string; override;
+        function CarregarColecao : TObject; override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pQuero : boolean):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ DAOEstados }
+
+function DAOEstados.Carregar(pPos: integer): TObject;
+begin
+  inherited;
+end;
+
+function DAOEstados.CarregarColecao: TObject;
+begin
+  inherited;
+end;
+
+constructor DAOEstados.CrieObj;
+begin
+   inherited;
+end;
+
+destructor DAOEstados.Destrua_se;
+begin
+  inherited;
+end;
+
+function DAOEstados.Excluir(pObj: TObject): boolean;
+begin
+  inherited;;
+end;
+
+procedure DAOEstados.LerArquivo;
+begin
+  inherited;
+
+end;
+
+function DAOEstados.Pesquisar(pChave: String; pQuero : boolean): integer;
+begin
+  inherited;
+end;
+
+function DAOEstados.Salvar(pObj: TObject): string;
+
+begin
+  inherited;
+end;
+
+procedure DAOEstados.SalvarArquivo;
+begin
+  inherited;
+
+end;
+
+end.

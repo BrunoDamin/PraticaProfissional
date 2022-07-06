@@ -1,0 +1,81 @@
+unit uDAOPaises;
+
+interface
+    uses uDAO, uColecaoPaises, uPaises;
+
+    type DAOPaises = class(DAO)
+      private
+      protected
+        umaColecaoPaises : ColecaoPaises;
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function Salvar (pObj : TObject):string; override;
+        function CarregarColecao : TObject; override;
+        function Carregar (pPos : integer) : TObject;     override;
+        procedure SalvarArquivo;         override;
+        procedure LerArquivo;             override;
+        function Pesquisar (pChave : String; pQuero : boolean):integer; override;
+        function Excluir (pObj : TObject) : boolean; override;
+    end;
+
+implementation
+
+{ DAOPaises }
+
+function DAOPaises.Carregar(pPos: integer): TObject;
+begin
+  result := umaColecaoPaises.Remover(pPos) ;
+end;
+
+function DAOPaises.CarregarColecao: TObject;
+begin
+  inherited;
+  result := umaColecaoPaises;
+end;
+
+constructor DAOPaises.CrieObj;
+begin
+   umaColecaoPaises := ColecaoPaises.CrieObj;
+end;
+
+destructor DAOPaises.Destrua_se;
+begin
+   umaColecaoPaises.Destrua_se;
+end;
+
+function DAOPaises.Excluir(pObj: TObject): boolean;
+var mPos : integer;
+    mPais, mPais2 : Paises;
+begin
+  //mPais := Paises(pObj);
+  //mPos := umaColecaoPaises.Pesquisar(mPais.getPais, true);
+  //mPais2 := Paises(umaColecaoPaises.Remover(mPos));
+  //result := mPais.getPais = mPais2.getPais;
+  result := true;
+end;
+
+procedure DAOPaises.LerArquivo;
+begin
+  inherited;
+
+end;
+
+function DAOPaises.Pesquisar(pChave: String; pQuero : boolean): integer;
+begin
+  inherited;
+end;
+
+function DAOPaises.Salvar(pObj: TObject): string;
+
+begin
+  inherited;
+end;
+
+procedure DAOPaises.SalvarArquivo;
+begin
+  inherited;
+
+end;
+
+end.

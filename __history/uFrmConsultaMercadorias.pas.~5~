@@ -1,0 +1,106 @@
+unit uFrmConsultaMercadorias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmConsultaPai, Vcl.ComCtrls,
+  Vcl.StdCtrls,
+  uMercadorias, uFornecedores, uCtrlMercadorias, uFrmCadastroMercadorias;
+
+type
+  TFrmConsultaMercadorias = class(TFrmConsultaPai)
+  private
+    { Private declarations }
+    umCadastroMercadorias : TFrmCadastroMercadorias;
+    umaMercadorias : Mercadorias;
+    umaFornecedor : Fornecedores;
+    umaCtrlMercadorias : CtrlMercadorias;
+  public
+    { Public declarations }
+
+    procedure ConhecaObj(pObj : TObject; pCtrl : TObject);  override;
+    procedure Incluir;                   override;
+    procedure Alterar;                   override;
+    procedure Excluir;                   override;
+    procedure Sair;                      override;
+    procedure Pesquisar;                 override;
+    procedure setCadastro(pObj : TObject); override;
+    procedure carregarLV;                 override;
+  end;
+
+var
+  FrmConsultaMercadorias: TFrmConsultaMercadorias;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsultaMercadorias }
+
+procedure TFrmConsultaMercadorias.Alterar;
+begin
+  inherited;
+  umCadastroFuncionarios.ConhecaObj(umFuncionario, umaCtrlFuncionarios);
+  umCadastroFuncionarios.LimparEdit;
+  umCadastroFuncionarios.CarregarEdit;
+  umCadastroFuncionarios.ShowModal;
+end;
+
+procedure TFrmConsultaMercadorias.carregarLV;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+  umFuncionario := Funcionarios(pObj);
+  umaCtrlFuncionarios := CtrlFuncionarios(pCtrl);
+end;
+
+procedure TFrmConsultaMercadorias.Excluir;
+var aux : string;
+begin
+  inherited;
+    aux := umCadastroFuncionarios.btn_Salvar.caption;
+    umCadastroFuncionarios.btn_Salvar.caption := 'Excluir';
+    umCadastroFuncionarios.ConhecaObj(umFuncionario, umaCtrlFuncionarios);
+    umCadastroFuncionarios.LimparEdit;
+    umCadastroFuncionarios.CarregarEdit;
+    umCadastroFuncionarios.BloquearEdit;
+    umCadastroFuncionarios.ShowModal;
+    umCadastroFuncionarios.DesbloquearEdit;
+    umCadastroFuncionarios.btn_Salvar.Caption := aux;
+end;
+
+procedure TFrmConsultaMercadorias.Incluir;
+begin
+   inherited;
+    umFuncionario.setCodigo(0);
+    umCadastroFuncionarios.ConhecaObj(umFuncionario, umaCtrlFuncionarios);
+    umCadastroFuncionarios.LimparEdit;
+    umCadastroFuncionarios.ShowModal;
+    self.carregarLV;
+end;
+
+procedure TFrmConsultaMercadorias.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrmConsultaMercadorias.setCadastro(pObj: TObject);
+begin
+  inherited;
+  umCadastroFuncionarios := TFrmCadastroFuncionarios(pObj);
+end;
+
+end.

@@ -1,0 +1,146 @@
+unit uFornecedores;
+
+interface
+    uses uPai, uCidades;
+
+    type Fornecedores = class(Pai)
+      private
+      protected
+        NomeFantasia : string[55];
+        cnpj : string[14];
+        rua : string[55];
+        numero : string[10];
+        bairro : string[55];
+        cep : string[15];
+        umaCidade : Cidades;
+      public
+        constructor CrieObj;
+        constructor CrieInit( pCodigo : integer; pNomeFantasia, pCnpj, pRua, pNumero, pBairro, pCep : string; pCodCidade : integer; pDataCad, pUltAlt: string);
+        destructor Destrua_se;
+        procedure setNomeFantasia(pNomeFantasia : string);
+        procedure setCnpj(pCnpj : string);
+        procedure setRua(pRua : string);
+        procedure setNumero(pNumero : string);
+        procedure setBairro(pBairro : string);
+        procedure setCep(pCep : string);
+        procedure setCidade(pCidade : Cidades);
+        function getNomeFantasia : string;
+        function getCnpj : string;
+        function getRua : string;
+        function getNumero : string;
+        function getBairro : string;
+        function getCep : string;
+        function getCidade : Cidades;
+        function clone : Fornecedores;
+    end;
+
+implementation
+
+{ Fornecedores }
+
+function Fornecedores.clone: Fornecedores;
+begin
+     result := Fornecedores.CrieInit(codigo, nomefantasia, cnpj, rua, numero, bairro, cep, umaCidade.getCodigo, dataCad, ultAlt );
+end;
+
+constructor Fornecedores.CrieInit(pCodigo: integer; pNomeFantasia, pCnpj, pRua, pNumero, pBairro, pCep : string; pCidade : Cidades; pDataCad, pUltAlt: string);
+begin
+    codigo := pCodigo;
+
+    DataCad := pDataCad;
+    UltALt := pUltAlt;
+
+end;
+
+constructor Fornecedores.CrieObj;
+begin
+    codigo := 0;
+
+    DataCad := '';
+    UltAlt := '';
+
+end;
+
+destructor Fornecedores.Destrua_se;
+begin
+
+end;
+
+function Fornecedores.getBairro: string;
+begin
+
+end;
+
+function Fornecedores.getCep: string;
+begin
+
+end;
+
+function Fornecedores.getCidade: Cidades;
+begin
+
+end;
+
+function Fornecedores.getCnpj: string;
+begin
+
+end;
+
+
+function Fornecedores.getNomeFantasia: string;
+begin
+
+end;
+
+function Fornecedores.getNumero: string;
+begin
+
+end;
+
+
+function Fornecedores.getRua: string;
+begin
+
+end;
+
+
+procedure Fornecedores.setBairro(pBairro: string);
+begin
+
+end;
+
+procedure Fornecedores.setCep(pCep: string);
+begin
+
+end;
+
+procedure Fornecedores.setCidade(pCidade: Cidades);
+begin
+
+end;
+
+procedure Fornecedores.setCnpj(pCnpj: string);
+begin
+
+end;
+
+
+procedure Fornecedores.setNomeFantasia(pNomeFantasia: string);
+begin
+
+end;
+
+procedure Fornecedores.setNumero(pNumero: string);
+begin
+
+end;
+
+
+procedure Fornecedores.setRua(pRua: string);
+begin
+
+end;
+
+
+end.
+

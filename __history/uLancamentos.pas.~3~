@@ -1,0 +1,24 @@
+unit uLancamentos;
+
+interface
+uses uPai, uEntregas;
+
+type Lancamentos = Class(Pai)
+  private
+  protected
+    Valor : real;
+    umaEntrega : Entregas;
+  public
+        constructor CrieObj;
+        constructor CrieInit( pCodigo, pCodEntrega : integer; valor : real; pDataCad, pUltAlt: string);
+        destructor Destrua_se;
+        procedure setValor(pValor : real);
+        procedure setEntrega(pEntrega : Entregas);
+        function getValor : real;
+        function getEntrega : Entregas;
+        function clone : Lancamentos;
+End;
+
+implementation
+
+end.

@@ -1,0 +1,24 @@
+unit uFrmConsultaPai;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFrmConsultaPai = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmConsultaPai: TFrmConsultaPai;
+
+implementation
+
+{$R *.dfm}
+
+end.

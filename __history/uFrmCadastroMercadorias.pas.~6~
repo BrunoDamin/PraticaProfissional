@@ -1,0 +1,90 @@
+unit uFrmCadastroMercadorias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmCadastroPai, Vcl.StdCtrls,
+  uMercadorias, uCtrlMercadorias;
+
+type
+  TFrmCadastroMercadorias = class(TFrmCadastroPai)
+    lbl_Mercadoria: TLabel;
+    lbl_Tipo: TLabel;
+    lbl_Quantidade: TLabel;
+    lbl_Valor: TLabel;
+    lbl_CodFornecedor: TLabel;
+    lbl_NomeFornecedor: TLabel;
+    btn_Pesquisar: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+  private
+    { Private declarations }
+    umaMercadoria : Mercadorias;
+    umaCtrlMercadorias : CtrlMercadorias;
+  public
+    { Public declarations }
+    procedure ConhecaObj (pObj : TObject; pCtrl : TObject);  override;
+    procedure LimparEdit;                                    override;
+    procedure CarregarEdit;                                  override;
+    procedure BloquearEdit;                                  override;
+    procedure DesbloquearEdit;                               override;
+    procedure Salvar;                                        override;
+    procedure Sair;
+  end;
+
+var
+  FrmCadastroMercadorias: TFrmCadastroMercadorias;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmCadastroMercadorias }
+
+procedure TFrmCadastroMercadorias.BloquearEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroMercadorias.CarregarEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroMercadorias.ConhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroMercadorias.DesbloquearEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroMercadorias.LimparEdit;
+begin
+  inherited;
+
+end;
+
+procedure TFrmCadastroMercadorias.Sair;
+begin
+
+end;
+
+procedure TFrmCadastroMercadorias.Salvar;
+begin
+  inherited;
+
+end;
+
+end.
