@@ -3,13 +3,14 @@ object DM: TDM
   Height = 414
   Width = 744
   object FDTrans: TFDTransaction
+    Connection = FDBanco
     Left = 128
     Top = 56
   end
   object FDBanco: TFDConnection
     ConnectionName = 'Banco'
     Params.Strings = (
-      'Database=C:\Users\Bruno Damin\Desktop\PRATICA FINAL\BANCO.FDB'
+      'Database=C:\pratica\BD2.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'CharacterSet=WIN1252'
@@ -19,6 +20,7 @@ object DM: TDM
     Top = 56
   end
   object QPaises: TFDQuery
+    Connection = FDBanco
     Left = 208
     Top = 56
   end

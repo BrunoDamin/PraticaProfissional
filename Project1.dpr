@@ -50,12 +50,19 @@ uses
   uFrmCadastroFuncionarios in 'uFrmCadastroFuncionarios.pas' {FrmCadastroFuncionarios},
   uCtrlEntregas in 'uCtrlEntregas.pas',
   uDAOEntregas in 'uDAOEntregas.pas',
-  uFrmCadastroEntregas in 'uFrmCadastroEntregas.pas' {FrmCadastroEntregas};
+  uFrmCadastroEntregas in 'uFrmCadastroEntregas.pas' {FrmCadastroEntregas},
+  uVeiculos in 'uVeiculos.pas';
 
 {$R *.res}
 
+var
+  Gerente : TFrmMain;
+
 begin
-  Application.Initialize;
+  Gerente := TFrmMain.Create(nil);
+  Gerente.ShowModal;
+  Gerente.FreeInstance;
+  {Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TFrmCadastroPai, FrmCadastroPai);
@@ -77,5 +84,5 @@ begin
   Application.CreateForm(TFrmCadastroMercadorias, FrmCadastroMercadorias);
   Application.CreateForm(TFrmCadastroFuncionarios, FrmCadastroFuncionarios);
   Application.CreateForm(TFrmCadastroEntregas, FrmCadastroEntregas);
-  Application.Run;
+  Application.Run;  }
 end.

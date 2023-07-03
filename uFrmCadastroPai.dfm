@@ -10,8 +10,6 @@ object FrmCadastroPai: TFrmCadastroPai
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
   TextHeight = 13
   object lbl_Codigo: TLabel
     Left = 32
